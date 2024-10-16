@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 :root {
-    --bg-color: #9c82cb;
+    --bg-color: #bce4d4;
     --primary-color: #8b5be4;
-    --secondary-color: #ffffff;
+    --secondary-color: #9c82cb;
     --font: "Comic Sans MS", sans-serif;
 }
 
 body {
+    background-image: ;
     background-color: var(--bg-color);
     color: var(--primary-color);
     font-family: var(--font);
