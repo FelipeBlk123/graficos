@@ -7,8 +7,10 @@
     --font: "Comic Sans MS", sans-serif;
 }
 
+section {
+    background-image: url("images/fade.jpg");
+}
 body {
-    background-image: ;
     background-color: var(--bg-color);
     color: var(--primary-color);
     font-family: var(--font);
