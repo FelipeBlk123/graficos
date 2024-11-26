@@ -1,22 +1,26 @@
-import { getCSS, tickConfig, criarGrafico } from "./common.js"
+import { getCSS, tickConfig, criarGrafico } from "./common.js";
 
 async function quantidadeUsuariosPorRede() {
-    const url = 'https://raw.githubusercontent.com/guilhermeonrails/api/main/numero-usuarios.json'
-    const res = await fetch(url)
-    const dados = await res.json()
-    const nomeDasRedes = Object.keys(dados)
-    const quantidadeDeUsuarios = Object.values(dados)
+    // Dados de usuários (simulados com base no seu exemplo)
+    const dadosUsuarios = {
+        Tiktok: 1.1,    // em bilhões
+        Instagram: 1.0, // em bilhões
+        Facebook: 2.9   // em bilhões
+    };
+
+    const redes = Object.keys(dadosUsuarios);
+    const usuarios = Object.values(dadosUsuarios);
 
     const data = [
         {
-            x: nomeDasRedes, 
-            y: quantidadeDeUsuarios, 
+            x: redes, 
+            y: usuarios, 
             type: 'bar',
             marker: {
                 color: getCSS('--primary-color')
             }
         }
-    ]
+    ];
 
     const layout = {
         plot_bgcolor: getCSS('--bg-color'),
@@ -33,7 +37,7 @@ async function quantidadeUsuariosPorRede() {
         xaxis: {
             tickfont: tickConfig,
             title: {
-                text: 'nome das redes sociais',
+                text: 'Redes sociais',
                 font: {
                     color: getCSS('--secondary-color')
                 }
@@ -42,16 +46,15 @@ async function quantidadeUsuariosPorRede() {
         yaxis: {
             tickfont: tickConfig,
             title: {
-                text: 'bilhões de usuários ativos',
+                text: 'Bilhões de usuários ativos',
                 font: {
                     color: getCSS('--secondary-color')
                 }
             }
         }
+    };
 
-    }
-
-    criarGrafico(data, layout)
+    criarGrafico(data, layout);
 }
 
-quantidadeUsuariosPorRede()
+quantidadeUsuariosPorRede();
