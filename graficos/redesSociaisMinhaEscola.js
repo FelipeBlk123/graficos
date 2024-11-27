@@ -1,26 +1,29 @@
-import { getCSS, criarGrafico, incluirTexto } from "./common.js";
+import { criarGrafico, getCSS, incluirTexto } from "./common.js";
 
-async function redesFavoritasMundo() {
-    // Substituir pela pesquisa global, adaptada de dados globais
-    const redes = ['Instagram', 'Facebook', 'WhatsApp', 'Twitter', 'TikTok', 'Outras'];
-    const valores = [25, 20, 15, 10, 15, 15]; // As porcentagens adaptadas da pesquisa
+async function redesSociaisFavoritasMinhaEscola() {
+    const dadosLocaisString = localStorage.getItem('respostaRedesSociais');
+    if (dadosLocaisString) {
+        const dadosLocais = JSON.parse(dadosLocaisString);
+        processarDados(dadosLocais);
+    } else {
+        const url = 'https://script.googleusercontent.com/macros/echo?user_content_key=rSe23zaQC7gOvWgFJbdtPaqh7ewsO5hQmusYOeqdorTRN8C25vVV3BicsPoS6HS3jnJY9NHhy_pNZj6prQdxDH3305Mro8vNm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPvESZ9fvnAeFWqfIvIacdoRZcVMZ-nDSydw9_0gseo2TN3y60rOTtwDBCYnKQf6yIqgf8yOzNfccjP633C9VnHmUmPZvRBJY9z9Jw9Md8uu&lib=MCARBaBtNBMHKiEwMeRap3j6V_G7SlGWF';
+        const res = await fetch(url);
+        const dados = await res.json();
+        localStorage.setItem('respostaRedesSociais', JSON.stringify(dados));
+        processarDados(dados);
+    }
+}
+
+function processarDados(dados) {
+    const redesSociais = ['TikTok', 'Instagram', 'Facebook', 'outras redes'];
+    const porcentagens = [32.47, 46.10, 0.00, 21.43]; // 46.10% para Instagram, o restante dividido entre as outras redes
 
     const data = [
         {
-            values: valores,
-            labels: redes,
+            values: porcentagens,
+            labels: redesSociais,
             type: 'pie',
-            textinfo: 'label+percent',
-            marker: {
-                colors: [
-                    '#F5A623', // Instagram
-                    '#3b5998', // Facebook
-                    '#25D366', // WhatsApp
-                    '#1DA1F2', // Twitter
-                    '#69C9D0', // TikTok
-                    '#E4E6EB'  // Outras
-                ]
-            }
+            textinfo: 'label+percent'
         }
     ];
 
@@ -29,7 +32,7 @@ async function redesFavoritasMundo() {
         paper_bgcolor: getCSS('--bg-color'),
         height: 700,
         title: {
-            text: 'Redes sociais favoritas globalmente',
+            text: 'Redes sociais que as pessoas da minha escola mais gostam',
             x: 0,
             font: {
                 color: getCSS('--primary-color'),
@@ -46,11 +49,7 @@ async function redesFavoritasMundo() {
     };
 
     criarGrafico(data, layout);
-
-    incluirTexto(`
-        Globalmente, o <span>Instagram</span> se destaca como a rede social favorita com 25% de preferência. Em seguida, temos o <span>Facebook</span> com 20%, e <span>WhatsApp</span> com 15%.<br>
-        Outras plataformas como <span>Twitter</span>, <span>TikTok</span>, e outras também têm uma participação significativa, mostrando a diversidade de preferências.
-    `);
+    incluirTexto(`Na amostra da minha escola, o <span>Instagram</span> é a rede social preferida com 46.10%, seguido por <span>TikTok</span>, <span>Facebook</span> e <span>outras redes</span>.`);
 }
 
-redesFavoritasMundo();
+redesSociaisFavoritasMinhaEscola();

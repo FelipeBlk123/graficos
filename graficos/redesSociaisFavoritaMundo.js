@@ -3,12 +3,10 @@ import { criarGrafico, getCSS, incluirTexto } from "./common.js";
 async function redesSociaisFavoritasMinhaEscola() {
     // Substituir pela pesquisa real
     const dadosPesquisa = [
-        { rede: "Instagram", votos: 25 }, // 25% para Instagram
-        { rede: "Facebook", votos: 20 },  // 20% para Facebook
-        { rede: "WhatsApp", votos: 15 },  // 15% para WhatsApp
-        { rede: "Twitter", votos: 10 },   // 10% para Twitter
-        { rede: "TikTok", votos: 15 },    // 15% para TikTok
-        { rede: "Outras", votos: 15 }     // 15% para outras redes
+        { rede: "Instagram", votos: 71}, // 46.10% para Instagram
+        { rede: "Facebook", votos: 0 },  // 0% para Facebook
+        { rede: "TikTok", votos: 50 },    // 32.47% para TikTok
+        { rede: "Outras", votos: 33 }     // 21.43% para outras redes
     ];
 
     processarDados(dadosPesquisa);
@@ -28,10 +26,8 @@ function processarDados(dados) {
                 colors: [
                     '#F5A623', // Instagram
                     '#3b5998', // Facebook
-                    '#25D366', // WhatsApp
-                    '#1DA1F2', // Twitter
-                    '#69C9D0', // TikTok
-                    '#E4E6EB'  // Outras
+                    '#25D366', // Tiktok
+                    '#E4E6EB'  // Outras redes
                 ]
             }
         }
