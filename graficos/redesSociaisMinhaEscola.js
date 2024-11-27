@@ -32,7 +32,7 @@ function processarDados(dados) {
         paper_bgcolor: getCSS('--bg-color'),
         height: 700,
         title: {
-            text: 'Redes sociais que as pessoas da minha escola mais gostam',
+            text: 'As redes sociais que alguns alunos do colegio Pedro Carli mais utilizão no seu dia dia',
             x: 0,
             font: {
                 color: getCSS('--primary-color'),
