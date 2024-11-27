@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 :root {
-    --bg-color: #bce4d4;
-    --primary-color: #8b5be4;
-    --secondary-color: #9c82cb;
-    --font: "Comic Sans MS", sans-serif;
+    --bg-color: #2E1A47; /* Roxo escuro */
+    --primary-color: #E8A0C9; /* Roxo claro */
+    --secondary-color: #9B4D96; /* Roxo médio */
+    --font: "Nunito Sans", sans-serif;
 }
 
-section {
-    background-image: url("images/fade.jpg");
-}
 body {
     background-color: var(--bg-color);
     color: var(--primary-color);
